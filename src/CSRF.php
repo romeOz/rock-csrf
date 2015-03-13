@@ -47,7 +47,6 @@ class CSRF implements EventsInterface
     /** @var  Security */
     public $security = 'security';
 
-
     public function init()
     {
         $this->security = Instance::ensure($this->security, Security::className());
