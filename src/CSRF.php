@@ -86,12 +86,12 @@ class CSRF implements EventsInterface
     }
 
     /**
-     * Validation token.
+     * Check token.
      *
      * @param string $compare value of token.
      * @return bool
      */
-    public function valid($compare = null)
+    public function check($compare = null)
     {
         if ($this->enableCsrfValidation === false) {
             return true;

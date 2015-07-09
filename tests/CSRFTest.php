@@ -33,11 +33,11 @@ class CSRFTest extends \PHPUnit_Framework_TestCase
      */
     public function testValid()
     {
-        $this->assertTrue($this->csrf->valid($this->csrf->get()));
-        $this->assertFalse($this->csrf->valid());
+        $this->assertTrue($this->csrf->check($this->csrf->get()));
+        $this->assertFalse($this->csrf->check());
 
         $this->csrf->enableCsrfValidation = false;
-        $this->assertTrue($this->csrf->valid());
+        $this->assertTrue($this->csrf->check());
     }
 
     /**
@@ -45,10 +45,10 @@ class CSRFTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidAsHeader()
     {
-        $this->assertFalse($this->csrf->valid());
+        $this->assertFalse($this->csrf->check());
         $key = 'HTTP_' . str_replace('-', '_', strtoupper(CSRF::CSRF_HEADER));;
         $_SERVER[$key] = $this->csrf->get();
-        $this->assertTrue($this->csrf->valid());
+        $this->assertTrue($this->csrf->check());
     }
 
     /**
