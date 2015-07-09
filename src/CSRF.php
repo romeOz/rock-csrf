@@ -98,7 +98,7 @@ class CSRF implements EventsInterface
         }
         $token = $this->load();
         if (empty($compare)) {
-            $compare  = $this->getCsrfTokenFromHeader();
+            $compare = $this->getCsrfTokenFromHeader();
         }
         if (!empty($compare) && $token === $compare) {
             $this->trigger(self::EVENT_AFTER_VALID);
